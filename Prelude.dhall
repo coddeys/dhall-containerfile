@@ -4,4 +4,5 @@ use so that the integrity check only needs to be updated in one place
 whenever upgrading the interpreter.
 -}
   env:DHALL_PRELUDE
-? https://prelude.dhall-lang.org/v17.0.0/package.dhall sha256:10db3c919c25e9046833df897a8ffe2701dc390fa0893d958c3430524be5a43e
+? https://prelude.dhall-lang.org/v23.1.0/package.dhall
+    sha256:931cbfae9d746c4611b07633ab1e547637ab4ba138b16bf65ef1b9ad66a60b7f
