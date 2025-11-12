@@ -3,7 +3,7 @@ let Prelude = ../../Prelude.dhall
 let renderEnvEntry
     : Prelude.Map.Entry Text Text -> Text
     = \(entry : Prelude.Map.Entry Text Text) ->
-        "ENV ${entry.mapKey} ${entry.mapValue}"
+        "ENV ${entry.mapKey}=${entry.mapValue}"
 
 let renderEnv
     : Prelude.Map.Type Text Text -> Text
@@ -28,9 +28,9 @@ let example0 =
                   )
             ++  "\n"
         ===  ''
-             ENV HOME /root
-             ENV PATH /usr/bin:$PATH
-             ENV TEST a space
+             ENV HOME=/root
+             ENV PATH=/usr/bin:$PATH
+             ENV TEST=a space
              ''
 
 in  renderEnv

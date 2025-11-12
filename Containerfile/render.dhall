@@ -21,7 +21,13 @@ let example0 =
               [ Statement.Type.From "fedora:latest"
               , Statement.Type.Empty
               , Statement.Type.Comment "A comment"
-              , Statement.Type.Env (toMap { HOME = "/root", TEST = "a space" })
+              , Statement.Type.Env
+                  ( toMap
+                      { HOME = "/root"
+                      , TEST = "a space"
+                      , PATH = "/usr/bin:\$PATH"
+                      }
+                  )
               , Statement.Type.Empty
               , Statement.Type.Run "dnf install -y emacs && dnf clean --all"
               ]
@@ -29,8 +35,9 @@ let example0 =
              FROM fedora:latest
 
              # A comment
-             ENV HOME /root
-             ENV TEST a space
+             ENV HOME=/root
+             ENV PATH=/usr/bin:$PATH
+             ENV TEST=a space
 
              RUN dnf install -y emacs && dnf clean --all
              ''
