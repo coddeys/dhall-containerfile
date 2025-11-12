@@ -97,12 +97,17 @@ let make
                 , "dnf erase -y " ++ Containerfile.concatSep " " build-reqs
                 ]
 
+        let set-env =
+              Containerfile.env
+                [ { mapKey = "PATH", mapValue = "/.local/bin:\${PATH}" } ]
+
         in    Containerfile.from "fedora:latest"
             # Containerfile.emptyLine
             # bootstrap
             # yasm-build
             # x264-build
             # ffmpeg-build
+            # set-env
             # cleanup
             # Containerfile.entrypoint [ "/usr/local/bin/ffmpeg" ]
 

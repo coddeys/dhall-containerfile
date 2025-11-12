@@ -12,6 +12,7 @@ RUN cd /usr/local/src && git clone --depth 1 https://code.videolan.org/videolan/
 # ffmpeg: PKG_CONFIG_PATH="/usr/local/lib/pkgconfig" ./configure --prefix="/usr/local" --extra-cflags="-I/usr/local/include" --extra-ldflags="-L/usr/local/lib" --pkg-config-flags="--static" --enable-gpl --enable-nonfree --enable-libx264 --enable-libxcb
 RUN cd /usr/local/src && git clone --depth 1 git://source.ffmpeg.org/ffmpeg && cd ffmpeg && PKG_CONFIG_PATH="/usr/local/lib/pkgconfig" ./configure --prefix="/usr/local" --extra-cflags="-I/usr/local/include" --extra-ldflags="-L/usr/local/lib" --pkg-config-flags="--static" --enable-gpl --enable-nonfree --enable-libx264 --enable-libxcb && make && make install
 
+ENV PATH /.local/bin:${PATH}
 # Cleanup
 RUN rm -Rf /usr/local/src/* && dnf clean all && dnf erase -y autoconf automake cmake freetype-devel gcc gcc-c++ git libtool make nasm pkgconfig zlib-devel numactl-devel libxcb-devel
 
