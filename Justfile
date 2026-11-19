@@ -6,5 +6,9 @@ demo:
 ffmpeg:
     echo '(./examples/ffmpeg.dhall).Containerfile' | dhall text --output ./examples/out/Ffmpeg.containerfile
 
+test:
+    dhall freeze --check --all package.dhall
+    dhall type --quiet --file ./examples/test.dhall
+
 watch:
     @watchexec -r --clear --exts dhall -- just examples

@@ -1,0 +1,19 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: cachix/install-nix-action@v31
+      - name: Run Dhall tests
+        run: nix shell github:NixOS/nixpkgs/nixos-unstable#dhall github:NixOS/nixpkgs/nixos-unstable#just --command just test
