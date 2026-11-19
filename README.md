@@ -233,6 +233,11 @@ ENTRYPOINT ["/usr/local/bin/ffmpeg"]
 
 Frozen package are available in the tag commit.
 
+### 0.4.2
+
+- Fetches Dhall Prelude v23.1.0 from GitHub Raw using the same integrity hashes.
+- Removes the legacy Shake, Zuul, and Gerrit configuration.
+
 ### 0.4.0
 
 - Add `user` helper
